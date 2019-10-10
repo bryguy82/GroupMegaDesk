@@ -26,7 +26,6 @@ namespace MegaDesk
         public const int MAX_WIDTH = 96;
         public const int MIN_DEPTH = 12;
         public const int MAX_DEPTH = 48;
-        public const int HEIGHT = 36; // Maybe change to a private int
         public const int DRAWER_MIN = 0;
         public const int DRAWER_MAX = 7;
 
