@@ -13,10 +13,11 @@ namespace MegaDesk
     public partial class DisplayQuote : Form
     {
         MainMenu showQuotesToMenu;
+        DeskQuote deskQuote;
         public DisplayQuote()
         {
             InitializeComponent();
-            DeskQuote deskQuote = new DeskQuote();
+            deskQuote = new DeskQuote();
             Desk desk = deskQuote.Desk;
 
             theDate.Text = deskQuote.PurchaseDate;
@@ -38,6 +39,19 @@ namespace MegaDesk
             }
             Hide();
             showQuotesToMenu.Show();
+        }
+
+        private void SaveQuote_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                deskQuote.storeQuote();
+                MessageBox.Show("Quote Saved!", "Notice");
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong with saving the quote. Try again later.", "Error");
+            }
         }
     }
 }

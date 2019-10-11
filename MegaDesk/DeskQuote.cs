@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk
 {
@@ -112,6 +114,34 @@ namespace MegaDesk
         {;
             DeskQuote customerQuote = new DeskQuote();
             customerQuote.Desk = desk;
+        }
+
+        public void storeQuote()
+        {
+            //Create new streamreader, have it read all objects in quotes.json
+            StreamReader reader = new StreamReader("../../Resources/quotes.json");
+            string jsonString = "";
+            while (reader.EndOfStream == false)
+            {
+                jsonString += reader.ReadLine();
+            }
+            reader.Close();
+
+            //Set up list of DeskQuote objects and deserialize json file
+            
+            List<DeskQuote> list;
+            list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
+            if (list == null)
+            {
+                list = new List<DeskQuote>();
+            }
+            //add new deskQuote to the list, and write it to the json file
+            list.Add(this);
+            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+            StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
+            writer.WriteLine(convertedJson);
+            writer.Close();            
+            
         }
     }
 }

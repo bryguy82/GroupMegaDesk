@@ -47,6 +47,7 @@
             this.theRush = new System.Windows.Forms.Label();
             this.theTotal = new System.Windows.Forms.Label();
             this.mainMenu = new System.Windows.Forms.Button();
+            this.saveQuote = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -216,11 +217,23 @@
             this.mainMenu.UseVisualStyleBackColor = true;
             this.mainMenu.Click += new System.EventHandler(this.mainMenu_Click);
             // 
+            // saveQuote
+            // 
+            this.saveQuote.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveQuote.Location = new System.Drawing.Point(325, 326);
+            this.saveQuote.Name = "saveQuote";
+            this.saveQuote.Size = new System.Drawing.Size(100, 30);
+            this.saveQuote.TabIndex = 22;
+            this.saveQuote.Text = "&Save Quote";
+            this.saveQuote.UseVisualStyleBackColor = true;
+            this.saveQuote.Click += new System.EventHandler(this.SaveQuote_Click);
+            // 
             // DisplayQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 381);
+            this.Controls.Add(this.saveQuote);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.theDate);
             this.Controls.Add(this.theCustomer);
@@ -270,5 +283,6 @@
         private System.Windows.Forms.Label theRush;
         private System.Windows.Forms.Label theTotal;
         private System.Windows.Forms.Button mainMenu;
+        private System.Windows.Forms.Button saveQuote;
     }
 }
