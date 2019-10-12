@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MegaDesk.Desk;
 
 namespace MegaDesk
 {
@@ -26,6 +27,8 @@ namespace MegaDesk
             desk = new Desk();
             quote = new DeskQuote();
 
+            List<DesktopMaterial> materials = Enum.GetValues(typeof(DesktopMaterial)).Cast<DesktopMaterial>().ToList();
+
             dateField.Text = $"{dateToday:dd MMMM yyyy}";
             quote.PurchaseDate = $"{dateToday:dd MMMM yyyy}";
 
@@ -36,11 +39,7 @@ namespace MegaDesk
             selectDrawersField.Minimum = Desk.DRAWER_MIN;
             selectDrawersField.Maximum = Desk.DRAWER_MAX;
 
-            deskMaterialField.Items.Add(DesktopMaterial.Laminate);
-            deskMaterialField.Items.Add(DesktopMaterial.Oak);
-            deskMaterialField.Items.Add(DesktopMaterial.Pine);
-            deskMaterialField.Items.Add(DesktopMaterial.Rosewood);
-            deskMaterialField.Items.Add(DesktopMaterial.Veneer);
+            deskMaterialField.DataSource = materials;
             deskMaterialField.DropDownStyle = ComboBoxStyle.DropDown;
 
             RushOrderField.Items.Add("No rush");
@@ -61,7 +60,7 @@ namespace MegaDesk
                 desk.Width = (int)selectWidthField.Value;
                 desk.Depth = (int)selectDepthField.Value;
                 desk.DrawerNum = (int)selectDrawersField.Value;
-                desk.MaterialType = deskMaterialField.SelectedItem.ToString();
+                desk.MaterialType = (DesktopMaterial)deskMaterialField.SelectedItem;
                 rush = RushOrderField.SelectedItem.ToString();
             }
             catch (Exception exc)
@@ -69,7 +68,7 @@ namespace MegaDesk
                 MessageBox.Show("Your input wasn't just right.");
             }
             deskArea = quote.buildDesk(desk.Width, desk.Depth);
-            quote.TotalCost = quote.calcCost(deskArea, desk.DrawerNum, desk.MaterialType);
+            quote.TotalCost = quote.calcCost(deskArea, desk.DrawerNum, desk.MaterialType.ToString());
 
             if (rush != "no rush")
             {
