@@ -182,6 +182,12 @@ namespace MegaDesk
             return rushCost;
         }
 
+        public void saveQuote()
+        {
+            DeskQuote customerQuote = new DeskQuote();
+            customerQuote.Desk = desk;
+        }
+
         public void storeQuote()
         {
             //Create new streamreader, have it read all objects in quotes.json
