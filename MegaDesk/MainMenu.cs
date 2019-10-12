@@ -15,10 +15,12 @@ namespace MegaDesk
         AddQuote addQuote;
         ViewAllQuotes viewAllQuotes;
         SearchQuotes searchQuotes;
+        DeskQuote quote = new DeskQuote();
 
         public MainMenu()
         {
             InitializeComponent();
+            quote.rushTextFile();
         }
 
         private void new_quote_Click(object sender, EventArgs e)

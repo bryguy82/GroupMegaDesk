@@ -20,17 +20,18 @@ namespace MegaDesk
         private static int drawerCost;
         private static int materialCost;
         private static int rushCost;
-        private static ArrayList quotes;
-        private Dictionary<int, int> rushSmallDict;
-        private Dictionary<int, int> rushMedDict;
-        private Dictionary<int, int> rushLargeDict;
+        private Dictionary<int, int> rushSmallDict = new Dictionary<int, int>();
+        private Dictionary<int, int> rushMedDict = new Dictionary<int, int>();
+        private Dictionary<int, int> rushLargeDict = new Dictionary<int, int>();
+        private static int[] rushDays = new int[] { 3, 5, 7 };
         private static Desk desk;
         private static String purchaseDate;
+        private static String[] rushPrices;
+        private static List<string> errorMessages = new List<string>();
 
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public int TotalCost { get => totalCost; set => totalCost = value; }
-        public ArrayList Quotes { get => quotes; set => quotes = value; }
         public int RushCost { get => rushCost; set => rushCost = value; }
         internal Desk Desk { get => desk; set => desk = value; }
         public string PurchaseDate { get => purchaseDate; set => purchaseDate = value; }
@@ -78,23 +79,94 @@ namespace MegaDesk
             return area + BASECOST + sizeCost + drawerCost + materialCost;
         }
 
+        public void rushTextFile()
+        {
+            /**
+             * Read the text file into a string array
+             * Convert them to int while adding to dictionaries
+             * 
+             * File has rush costs going from the most expensive
+             * to the least expensive by rush date.
+             * EX: 3 day small desk, 3 day med desk, 3 day large desk,
+             *     5 day small desk, 5 day med desk, 5 day large desk,
+             *     7 day small desk, 7 day med desk, 7 day large desk
+             */
+            string fileName = "../../Resources/rushOrderPrices.txt";
+            try
+            {
+                if (File.Exists(fileName))
+                {
+                    rushPrices = File.ReadAllLines(fileName);
+                }
+                for (int i = 0; i < rushPrices.Length; i++) {
+                    int rushCost = int.Parse(rushPrices[i]);
+                    switch (i)
+                    {
+                        case 0:
+                        case 3:
+                        case 6:
+                            if (i == 0)
+                            {
+                                rushSmallDict.Add(rushDays[0], rushCost);
+                            } else if (i == 3)
+                            {
+                                rushSmallDict.Add(rushDays[1], rushCost);
+                            } else
+                            {
+                                rushSmallDict.Add(rushDays[2], rushCost);
+                            }
+                            break;
+                        case 1:
+                        case 4:
+                        case 7:
+                            if (i == 1)
+                            {
+                                rushMedDict.Add(rushDays[0], rushCost);
+                            }
+                            else if (i == 4)
+                            {
+                                rushMedDict.Add(rushDays[1], rushCost);
+                            }
+                            else
+                            {
+                                rushMedDict.Add(rushDays[2], rushCost);
+                            }
+                            break;
+                        case 2:
+                        case 5:
+                        case 8:
+                            if (i == 2)
+                            {
+                                rushLargeDict.Add(rushDays[0], rushCost);
+                            }
+                            else if (i == 5)
+                            {
+                                rushLargeDict.Add(rushDays[1], rushCost);
+                            }
+                            else
+                            {
+                                rushLargeDict.Add(rushDays[2], rushCost);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            } catch(FileNotFoundException exc)
+            {
+                errorMessages.Add(exc.Message);
+            } catch(FormatException exc)
+            {
+                errorMessages.Add(exc.Message);
+            }
+        }
+
         public int calcRush(int deskSize, int days)
         {
-            rushSmallDict = new Dictionary<int, int>();
-            rushSmallDict.Add(3, 60);
-            rushSmallDict.Add(5, 40);
-            rushSmallDict.Add(7, 30);
+            // Get the prices from a file.
+            rushTextFile();
 
-            rushMedDict = new Dictionary<int, int>();
-            rushMedDict.Add(3, 70);
-            rushMedDict.Add(5, 50);
-            rushMedDict.Add(7, 35);
-
-            rushLargeDict = new Dictionary<int, int>();
-            rushLargeDict.Add(3, 80);
-            rushLargeDict.Add(5, 60);
-            rushLargeDict.Add(7, 40);
-
+            // Set up the cost based on the size of the desktop
             if (deskSize <= 1000)
             {
                 rushCost = rushSmallDict[days];
@@ -108,12 +180,6 @@ namespace MegaDesk
                 rushCost = rushLargeDict[days];
             }
             return rushCost;
-        }
-
-        public void saveQuote()
-        {;
-            DeskQuote customerQuote = new DeskQuote();
-            customerQuote.Desk = desk;
         }
 
         public void storeQuote()
