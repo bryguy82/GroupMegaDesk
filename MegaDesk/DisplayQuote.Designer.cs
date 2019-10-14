@@ -257,6 +257,7 @@
             this.MinimizeBox = false;
             this.Name = "DisplayQuote";
             this.Text = "DisplayQuotes";
+            this.Load += new System.EventHandler(this.DisplayQuote_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

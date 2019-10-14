@@ -166,7 +166,8 @@ namespace MegaDesk
 
         private void selectWidthField_Validating(object sender, CancelEventArgs e)
         {
-            if (desk.Width.GetType() == typeof(int)) {
+            if (desk.Width.GetType() == typeof(int))
+            {
                 if (desk.Width >= Desk.MIN_WIDTH && desk.Width <= Desk.MAX_WIDTH)
                 {
                     selectWidthField.BackColor = SystemColors.Window;
@@ -201,7 +202,7 @@ namespace MegaDesk
 
         private void selectDepthField_KeyUp(object sender, KeyEventArgs e)
         {
-            char test = (char) desk.Depth;
+            char test = (char)desk.Depth;
             if (char.IsDigit(test))
             {
                 checkValidEntries();

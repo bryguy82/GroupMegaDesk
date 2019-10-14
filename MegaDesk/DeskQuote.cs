@@ -38,7 +38,7 @@ namespace MegaDesk
 
         public DeskQuote()
         {
-            
+
         }
 
         public int buildDesk(int width, int depth)
@@ -98,7 +98,8 @@ namespace MegaDesk
                 {
                     rushPrices = File.ReadAllLines(fileName);
                 }
-                for (int i = 0; i < rushPrices.Length; i++) {
+                for (int i = 0; i < rushPrices.Length; i++)
+                {
                     int rushCost = int.Parse(rushPrices[i]);
                     switch (i)
                     {
@@ -108,10 +109,12 @@ namespace MegaDesk
                             if (i == 0)
                             {
                                 rushSmallDict.Add(rushDays[0], rushCost);
-                            } else if (i == 3)
+                            }
+                            else if (i == 3)
                             {
                                 rushSmallDict.Add(rushDays[1], rushCost);
-                            } else
+                            }
+                            else
                             {
                                 rushSmallDict.Add(rushDays[2], rushCost);
                             }
@@ -152,10 +155,12 @@ namespace MegaDesk
                             break;
                     }
                 }
-            } catch(FileNotFoundException exc)
+            }
+            catch (FileNotFoundException exc)
             {
                 errorMessages.Add(exc.Message);
-            } catch(FormatException exc)
+            }
+            catch (FormatException exc)
             {
                 errorMessages.Add(exc.Message);
             }
@@ -200,7 +205,7 @@ namespace MegaDesk
             reader.Close();
 
             //Set up list of DeskQuote objects and deserialize json file
-            
+
             List<DeskQuote> list;
             list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
             if (list == null)
@@ -212,8 +217,8 @@ namespace MegaDesk
             var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
             StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
             writer.WriteLine(convertedJson);
-            writer.Close();            
-            
+            writer.Close();
+
         }
     }
 }

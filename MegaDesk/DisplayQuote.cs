@@ -29,6 +29,17 @@ namespace MegaDesk
             theMaterial.Text = desk.MaterialType.ToString();
             theRush.Text = deskQuote.RushCost.ToString();
             theTotal.Text = deskQuote.TotalCost.ToString();
+
+
+            theWidth.Text = String.Format("{0,10:0}", desk.Width);
+            theDepth.Text = String.Format("{0,10:0}", desk.Depth);
+            theArea.Text = String.Format("{0,10:0}", desk.Width * desk.Depth);
+            theDrawers.Text = String.Format("{0,10:0}", desk.DrawerNum);
+
+            theRush.Text = String.Format("{0,10:$0.00}", deskQuote.RushCost);
+            theTotal.Text = String.Format("{0,10:$0.00}", deskQuote.TotalCost);
+
+
         }
 
         private void mainMenu_Click(object sender, EventArgs e)
@@ -53,5 +64,12 @@ namespace MegaDesk
                 MessageBox.Show("Something went wrong with saving the quote. Try again later.", "Error");
             }
         }
+
+        private void DisplayQuote_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
