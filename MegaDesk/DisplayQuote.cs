@@ -14,6 +14,18 @@ namespace MegaDesk
     {
         MainMenu showQuotesToMenu;
         DeskQuote deskQuote;
+        private EventHandler displayQuote;
+
+        public EventHandler GetDisplayQuote()
+        {
+            return displayQuote;
+        }
+
+        private void SetDisplayQuote(EventHandler value)
+        {
+            displayQuote = value;
+        }
+
         public DisplayQuote()
         {
             InitializeComponent();
@@ -67,7 +79,7 @@ namespace MegaDesk
 
         private void DisplayQuote_Load(object sender, EventArgs e)
         {
-
+            SetDisplayQuote(new EventHandler(this.DisplayQuote_Load));
         }
 
 
