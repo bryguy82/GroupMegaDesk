@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MegaDesk
@@ -14,17 +7,6 @@ namespace MegaDesk
     {
         MainMenu showQuotesToMenu;
         DeskQuote deskQuote;
-        private EventHandler displayQuote;
-
-        public EventHandler GetDisplayQuote()
-        {
-            return displayQuote;
-        }
-
-        private void SetDisplayQuote(EventHandler value)
-        {
-            displayQuote = value;
-        }
 
         public DisplayQuote()
         {
@@ -42,12 +24,11 @@ namespace MegaDesk
             theRush.Text = deskQuote.RushCost.ToString();
             theTotal.Text = deskQuote.TotalCost.ToString();
 
-
+            theDate.Text = String.Format("{0,10:dd-MMM-yy}", deskQuote.PurchaseDate);
             theWidth.Text = String.Format("{0,10:0}", desk.Width);
             theDepth.Text = String.Format("{0,10:0}", desk.Depth);
             theArea.Text = String.Format("{0,10:0}", desk.Width * desk.Depth);
             theDrawers.Text = String.Format("{0,10:0}", desk.DrawerNum);
-
             theRush.Text = String.Format("{0,10:$0.00}", deskQuote.RushCost);
             theTotal.Text = String.Format("{0,10:$0.00}", deskQuote.TotalCost);
 
@@ -79,9 +60,9 @@ namespace MegaDesk
 
         private void DisplayQuote_Load(object sender, EventArgs e)
         {
-            SetDisplayQuote(new EventHandler(this.DisplayQuote_Load));
+            this.Show();
         }
 
-
+        
     }
 }
