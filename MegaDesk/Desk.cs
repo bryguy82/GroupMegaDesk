@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MegaDesk
 {
-    class Desk
+    public class Desk
     {
-        private static int width;
-        private static int depth;
-        private static int drawerNum;
+        private int width;
+        private int depth;
+        private int drawerNum;
         public const int MIN_WIDTH = 24;
         public const int MAX_WIDTH = 96;
         public const int MIN_DEPTH = 12;
@@ -34,6 +34,11 @@ namespace MegaDesk
         public Desk()
         {
 
+        }
+
+        public int getArea()
+        {
+            return width * depth;
         }
 
         

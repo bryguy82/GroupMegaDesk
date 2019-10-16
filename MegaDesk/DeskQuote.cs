@@ -19,8 +19,7 @@ namespace MegaDesk
         private Dictionary<int, int> rushMedDict = new Dictionary<int, int>();
         private Dictionary<int, int> rushLargeDict = new Dictionary<int, int>();
         private  int[] rushDays = new int[] { 3, 5, 7 };
-        private  Desk desk;
-        private  String purchaseDate;
+        private String purchaseDate;
         private  String[] rushPrices;
         private  List<string> errorMessages = new List<string>();
 
@@ -28,21 +27,13 @@ namespace MegaDesk
         public string LastName { get => lastName; set => lastName = value; }
         public int TotalCost { get => totalCost; set => totalCost = value; }
         public int RushCost { get => rushCost; set => rushCost = value; }
-        internal Desk Desk { get => desk; set => desk = value; }
+        public Desk Desk { get; set; }
         public string PurchaseDate { get => purchaseDate; set => purchaseDate = value; }
 
         public DeskQuote()
         {
 
-        }
-
-        public int buildDesk(int width, int depth)
-        {
-            desk = new Desk();
-            desk.Width = width;
-            desk.Depth = depth;
-            return width * depth;
-        }
+        }        
 
         public int calcCost(int area, int drawers, String material)
         {
@@ -180,13 +171,7 @@ namespace MegaDesk
                 rushCost = rushLargeDict[days];
             }
             return rushCost;
-        }
-
-        public void saveQuote()
-        {
-            DeskQuote customerQuote = new DeskQuote();
-            customerQuote.Desk = desk;
-        }
+        }        
 
         public void storeQuote()
         {
@@ -197,9 +182,7 @@ namespace MegaDesk
     //Set up list of DeskQuote objects and deserialize json file
 
     List<DeskQuote> list;
-    Console.WriteLine(this.FirstName + " after list make before list populate");
     list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
-    Console.WriteLine(this.FirstName + " after list populate");
     if (list == null)
     {
         list = new List<DeskQuote>();
@@ -210,21 +193,6 @@ namespace MegaDesk
     StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
     writer.WriteLine(convertedJson);
     writer.Close();
-    
-    //Test stuff
-    string testJson = "[  {                'FirstName': 'Nameone',    'LastName': 'Lastnameone',    'TotalCost': 568,    'RushCost': 30,    'PurchaseDate': '15 October 2019'  },  {                'FirstName': 'Name2',    'LastName': 'Lastname2',    'TotalCost': 568,    'RushCost': 30,    'PurchaseDate': '15 October 2019'  }]";
-            List<DeskQuote> testQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(testJson);
-            foreach (DeskQuote quote in testQuotes)
-            {
-                Console.WriteLine(quote.FirstName);
-            }
-            string json = "['Starcraft','Halo','Legend of Zelda']";
-
-            List<string> videogames = JsonConvert.DeserializeObject<List<string>>(json);
-
-            Console.WriteLine(string.Join(", ", videogames.ToArray()));
-
-
 
         }
     }

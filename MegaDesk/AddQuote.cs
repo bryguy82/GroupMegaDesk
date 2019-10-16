@@ -61,13 +61,14 @@ namespace MegaDesk
                 desk.Depth = (int)selectDepthField.Value;
                 desk.DrawerNum = (int)selectDrawersField.Value;
                 desk.MaterialType = (DesktopMaterial)deskMaterialField.SelectedItem;
+                quote.Desk = desk;
                 rush = RushOrderField.SelectedItem.ToString();
             }
             catch (Exception exc)
             {
                 MessageBox.Show("Your input wasn't just right.");
             }
-            deskArea = quote.buildDesk(desk.Width, desk.Depth);
+            deskArea = desk.getArea();
             quote.TotalCost = quote.calcCost(deskArea, desk.DrawerNum, desk.MaterialType.ToString());
 
             if (rush != "no rush")
@@ -86,8 +87,6 @@ namespace MegaDesk
                 }
                 quote.TotalCost += quote.RushCost;
             }
-
-            quote.saveQuote();
 
             if (displayQuoteView == null)
             {

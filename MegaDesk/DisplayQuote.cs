@@ -18,7 +18,7 @@ namespace MegaDesk
             theCustomer.Text = $"{deskQuote.FirstName} {deskQuote.LastName}";
             theWidth.Text = desk.Width.ToString();
             theDepth.Text = desk.Depth.ToString();
-            theArea.Text = (desk.Width * desk.Depth).ToString();
+            theArea.Text = (desk.getArea()).ToString();
             theDrawers.Text = desk.DrawerNum.ToString();
             theMaterial.Text = desk.MaterialType.ToString();
             theRush.Text = deskQuote.RushCost.ToString();
@@ -27,7 +27,7 @@ namespace MegaDesk
             theDate.Text = String.Format("{0,10:dd-MMM-yy}", deskQuote.PurchaseDate);
             theWidth.Text = String.Format("{0,10:0}", desk.Width);
             theDepth.Text = String.Format("{0,10:0}", desk.Depth);
-            theArea.Text = String.Format("{0,10:0}", desk.Width * desk.Depth);
+            theArea.Text = String.Format("{0,10:0}", desk.getArea());
             theDrawers.Text = String.Format("{0,10:0}", desk.DrawerNum);
             theRush.Text = String.Format("{0,10:$0.00}", deskQuote.RushCost);
             theTotal.Text = String.Format("{0,10:$0.00}", deskQuote.TotalCost);

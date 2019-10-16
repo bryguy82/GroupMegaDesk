@@ -1,23 +1,41 @@
 [
   {
-    "FirstName": "Crazy",
-    "LastName": "Dazy",
-    "TotalCost": 568,
-    "RushCost": 30,
-    "PurchaseDate": "15 October 2019"
-  },
-  {
-    "FirstName": "a",
-    "LastName": "a",
-    "TotalCost": 598,
-    "RushCost": 60,
+    "FirstName": "Pinky",
+    "LastName": "Mouse",
+    "TotalCost": 893,
+    "RushCost": 40,
+    "Desk": {
+      "Width": 27,
+      "Depth": 14,
+      "DrawerNum": 3,
+      "MaterialType": 150
+    },
     "PurchaseDate": "16 October 2019"
   },
   {
-    "FirstName": "grumpy",
-    "LastName": "gills",
-    "TotalCost": 958,
-    "RushCost": 30,
+    "FirstName": "And the",
+    "LastName": "Brain",
+    "TotalCost": 9146,
+    "RushCost": 80,
+    "Desk": {
+      "Width": 96,
+      "Depth": 48,
+      "DrawerNum": 7,
+      "MaterialType": 300
+    },
+    "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "Yakko",
+    "LastName": "Warner",
+    "TotalCost": 1010,
+    "RushCost": 60,
+    "Desk": {
+      "Width": 30,
+      "Depth": 20,
+      "DrawerNum": 1,
+      "MaterialType": 100
+    },
     "PurchaseDate": "16 October 2019"
   }
 ]
