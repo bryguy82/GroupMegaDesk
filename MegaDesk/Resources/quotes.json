@@ -1,51 +1,23 @@
 [
   {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
+    "FirstName": "Crazy",
+    "LastName": "Dazy",
+    "TotalCost": 568,
     "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
+    "PurchaseDate": "15 October 2019"
   },
   {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
-    "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
+    "FirstName": "a",
+    "LastName": "a",
+    "TotalCost": 598,
+    "RushCost": 60,
+    "PurchaseDate": "16 October 2019"
   },
   {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
+    "FirstName": "grumpy",
+    "LastName": "gills",
+    "TotalCost": 958,
     "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
-  },
-  {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
-    "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
-  },
-  {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
-    "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
-  },
-  {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
-    "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
-  },
-  {
-    "FirstName": "Ben",
-    "LastName": "Dude",
-    "TotalCost": 618,
-    "RushCost": 30,
-    "PurchaseDate": "11 October 2019"
+    "PurchaseDate": "16 October 2019"
   }
 ]

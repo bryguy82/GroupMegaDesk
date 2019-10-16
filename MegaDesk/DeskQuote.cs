@@ -1,33 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 using System.IO;
 using Newtonsoft.Json;
 
 namespace MegaDesk
 {
-
-    class DeskQuote
+    public class DeskQuote
     {
         public const int BASECOST = 200;
-        private static String firstName;
-        private static String lastName;
-        private static int totalCost;
-        private static int sizeCost;
-        private static int drawerCost;
-        private static int materialCost;
-        private static int rushCost;
+        private  String firstName;
+        private  String lastName;
+        private  int totalCost;
+        private  int sizeCost;
+        private  int drawerCost;
+        private  int materialCost;
+        private  int rushCost;
         private Dictionary<int, int> rushSmallDict = new Dictionary<int, int>();
         private Dictionary<int, int> rushMedDict = new Dictionary<int, int>();
         private Dictionary<int, int> rushLargeDict = new Dictionary<int, int>();
-        private static int[] rushDays = new int[] { 3, 5, 7 };
-        private static Desk desk;
-        private static String purchaseDate;
-        private static String[] rushPrices;
-        private static List<string> errorMessages = new List<string>();
+        private  int[] rushDays = new int[] { 3, 5, 7 };
+        private  Desk desk;
+        private  String purchaseDate;
+        private  String[] rushPrices;
+        private  List<string> errorMessages = new List<string>();
 
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
@@ -195,29 +190,41 @@ namespace MegaDesk
 
         public void storeQuote()
         {
-            //Create new streamreader, have it read all objects in quotes.json
-            StreamReader reader = new StreamReader("../../Resources/quotes.json");
-            string jsonString = "";
-            while (reader.EndOfStream == false)
-            {
-                jsonString += reader.ReadLine();
-            }
-            reader.Close();
+    //Create new streamreader, have it read all objects in quotes.json
+    string jsonString = "";
+    jsonString += File.ReadAllText("../../Resources/quotes.json");
+    Console.WriteLine(jsonString);
+    //Set up list of DeskQuote objects and deserialize json file
 
-            //Set up list of DeskQuote objects and deserialize json file
-
-            List<DeskQuote> list;
-            list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
-            if (list == null)
+    List<DeskQuote> list;
+    Console.WriteLine(this.FirstName + " after list make before list populate");
+    list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
+    Console.WriteLine(this.FirstName + " after list populate");
+    if (list == null)
+    {
+        list = new List<DeskQuote>();
+    }
+    //add new deskQuote to the list, and write it to the json file
+    list.Add(this);
+    var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+    StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
+    writer.WriteLine(convertedJson);
+    writer.Close();
+    
+    //Test stuff
+    string testJson = "[  {                'FirstName': 'Nameone',    'LastName': 'Lastnameone',    'TotalCost': 568,    'RushCost': 30,    'PurchaseDate': '15 October 2019'  },  {                'FirstName': 'Name2',    'LastName': 'Lastname2',    'TotalCost': 568,    'RushCost': 30,    'PurchaseDate': '15 October 2019'  }]";
+            List<DeskQuote> testQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(testJson);
+            foreach (DeskQuote quote in testQuotes)
             {
-                list = new List<DeskQuote>();
+                Console.WriteLine(quote.FirstName);
             }
-            //add new deskQuote to the list, and write it to the json file
-            list.Add(this);
-            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
-            StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
-            writer.WriteLine(convertedJson);
-            writer.Close();
+            string json = "['Starcraft','Halo','Legend of Zelda']";
+
+            List<string> videogames = JsonConvert.DeserializeObject<List<string>>(json);
+
+            Console.WriteLine(string.Join(", ", videogames.ToArray()));
+
+
 
         }
     }

@@ -8,10 +8,10 @@ namespace MegaDesk
         MainMenu showQuotesToMenu;
         DeskQuote deskQuote;
 
-        public DisplayQuote()
+        public DisplayQuote(DeskQuote fromDeskQuote)
         {
             InitializeComponent();
-            deskQuote = new DeskQuote();
+            deskQuote = fromDeskQuote;
             Desk desk = deskQuote.Desk;
 
             theDate.Text = deskQuote.PurchaseDate;
