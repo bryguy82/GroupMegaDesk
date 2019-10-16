@@ -33,7 +33,17 @@ namespace MegaDesk
         public DeskQuote()
         {
 
-        }        
+        }
+
+        public DeskQuote(string firstName, string lastName, int totalCost, int rushCost, Desk desk, string purchaseDate)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            TotalCost = totalCost;
+            RushCost = rushCost;
+            Desk = desk;
+            PurchaseDate = purchaseDate;
+        }
 
         public int calcCost(int area, int drawers, String material)
         {
@@ -175,24 +185,24 @@ namespace MegaDesk
 
         public void storeQuote()
         {
-    //Create new streamreader, have it read all objects in quotes.json
-    string jsonString = "";
-    jsonString += File.ReadAllText("../../Resources/quotes.json");
-    Console.WriteLine(jsonString);
-    //Set up list of DeskQuote objects and deserialize json file
+            //Create new streamreader, have it read all objects in quotes.json
+            string jsonString = "";
+            jsonString += File.ReadAllText("../../Resources/quotes.json");
+            Console.WriteLine(jsonString);
+            //Set up list of DeskQuote objects and deserialize json file
 
-    List<DeskQuote> list;
-    list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
-    if (list == null)
-    {
-        list = new List<DeskQuote>();
-    }
-    //add new deskQuote to the list, and write it to the json file
-    list.Add(this);
-    var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
-    StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
-    writer.WriteLine(convertedJson);
-    writer.Close();
+            List<DeskQuote> list;
+            list = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonString);
+            if (list == null)
+            {
+                list = new List<DeskQuote>();
+            }
+            //add new deskQuote to the list, and write it to the json file
+            list.Add(this);
+            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+            StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
+            writer.WriteLine(convertedJson);
+            writer.Close();
 
         }
     }

@@ -36,6 +36,14 @@ namespace MegaDesk
 
         }
 
+        public Desk(int width, int depth, int drawerNum, DesktopMaterial materialType)
+        {
+            Width = width;
+            Depth = depth;
+            DrawerNum = drawerNum;
+            MaterialType = materialType;
+        }
+
         public int getArea()
         {
             return width * depth;
