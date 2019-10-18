@@ -37,5 +37,70 @@
       "MaterialType": 100
     },
     "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "Pinky",
+    "LastName": "Mouse",
+    "TotalCost": 893,
+    "RushCost": 40,
+    "Desk": {
+      "Width": 27,
+      "Depth": 14,
+      "DrawerNum": 3,
+      "MaterialType": 150
+    },
+    "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "And the",
+    "LastName": "Brain",
+    "TotalCost": 9146,
+    "RushCost": 80,
+    "Desk": {
+      "Width": 96,
+      "Depth": 48,
+      "DrawerNum": 7,
+      "MaterialType": 300
+    },
+    "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "Pinky",
+    "LastName": "Mouse",
+    "TotalCost": 893,
+    "RushCost": 40,
+    "Desk": {
+      "Width": 27,
+      "Depth": 14,
+      "DrawerNum": 3,
+      "MaterialType": 150
+    },
+    "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "Yakko",
+    "LastName": "Warner",
+    "TotalCost": 1010,
+    "RushCost": 60,
+    "Desk": {
+      "Width": 30,
+      "Depth": 20,
+      "DrawerNum": 1,
+      "MaterialType": 100
+    },
+    "PurchaseDate": "16 October 2019"
+  },
+  {
+    "FirstName": "Pinky",
+    "LastName": "Mouse",
+    "TotalCost": 893,
+    "RushCost": 40,
+    "Desk": {
+      "Width": 37,
+      "Depth": 15,
+      "DrawerNum": 3,
+      "MaterialType": 150
+    },
+    "PurchaseDate": "16 October 2019"
   }
 ]
