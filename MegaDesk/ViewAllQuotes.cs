@@ -15,6 +15,8 @@ namespace MegaDesk
     public partial class ViewAllQuotes : Form
     {
         MainMenu allQuotesToMenu;
+        DisplayQuote displayQuote;
+        DeskQuote quoteToShow;
         List<DeskQuote> list;
         public ViewAllQuotes()
         {
@@ -24,8 +26,11 @@ namespace MegaDesk
             try
             {
                 list = getDeskQuotes();
-                //Test quotes
-                //MessageBox.Show(list.ToString(), "Test");
+
+                quotesGrid.DataSource = list;
+
+                displayQuoteButton.Enabled = false;
+
             }
             catch
             {
@@ -73,6 +78,29 @@ namespace MegaDesk
                 returnList = new List<DeskQuote>();
             }
             return returnList;
+        }
+
+        private void quotesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /**
+              * Where the selected quote matches, use the selection in
+              * the "quoteToShow" to get the entire object from "list"
+              * before displaying it on DisplayQuote
+              */
+            int selectedRow = e.RowIndex;
+            quoteToShow = list[selectedRow];
+            displayQuoteButton.Enabled = true;
+        }
+
+        private void displayQuoteButton_Click(object sender, EventArgs e)
+        {
+            if (displayQuote == null)
+            {
+                displayQuote = new DisplayQuote(quoteToShow);
+            }
+            
+            Hide();
+            displayQuote.Show();
         }
     }
 }

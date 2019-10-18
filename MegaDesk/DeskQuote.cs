@@ -47,6 +47,20 @@ namespace MegaDesk
 
         public int calcCost(int area, int drawers, String material)
         {
+
+            materialCost = calcMaterialCost(material);
+            drawerCost = drawers * 50;
+
+            if (area > 1000)
+            {
+                sizeCost = area - 1000;
+            }
+
+            return area + BASECOST + sizeCost + drawerCost + materialCost;
+        }
+
+        public int calcMaterialCost(String material)
+        {
             switch (material)
             {
                 case ("Laminate"):
@@ -65,14 +79,7 @@ namespace MegaDesk
                     materialCost = 125;
                     break;
             }
-            drawerCost = drawers * 50;
-
-            if (area > 1000)
-            {
-                sizeCost = area - 1000;
-            }
-
-            return area + BASECOST + sizeCost + drawerCost + materialCost;
+            return materialCost;
         }
 
         public void rushTextFile()
@@ -204,6 +211,13 @@ namespace MegaDesk
             writer.WriteLine(convertedJson);
             writer.Close();
 
+        }
+        public int changeMaterialCost(DeskQuote quote, String materialNew)
+        {
+            string oldMaterial = quote.materialCost.ToString();
+            int costSub = calcMaterialCost(oldMaterial);
+            int costAdd = calcMaterialCost(materialNew);
+            return costSub - costAdd;
         }
     }
 }
