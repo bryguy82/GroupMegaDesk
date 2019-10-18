@@ -91,6 +91,7 @@ namespace MegaDesk
             if (displayQuoteView == null)
             {
                 displayQuoteView = new DisplayQuote(quote);
+                displayQuoteView.saveQuote.Visible = true;
             }
             Hide();
             displayQuoteView.Show();
