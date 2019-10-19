@@ -51,12 +51,9 @@ namespace MegaDesk
             materialCost = calcMaterialCost(material);
             drawerCost = drawers * 50;
 
-            if (area > 1000)
-            {
-                sizeCost = area - 1000;
-            }
+            sizeCost = area * 1;
 
-            return area + BASECOST + sizeCost + drawerCost + materialCost;
+            return BASECOST + sizeCost + drawerCost + materialCost;
         }
 
         public int calcMaterialCost(String material)

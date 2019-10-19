@@ -16,23 +16,17 @@ namespace MegaDesk
 
             theDate.Text = deskQuote.PurchaseDate;
             theCustomer.Text = $"{deskQuote.FirstName} {deskQuote.LastName}";
-            theWidth.Text = desk.Width.ToString();
-            theDepth.Text = desk.Depth.ToString();
-            theArea.Text = (desk.getArea()).ToString();
-            theDrawers.Text = desk.DrawerNum.ToString();
-            theMaterial.Text = desk.MaterialType.ToString();
-            theRush.Text = deskQuote.RushCost.ToString();
-            theTotal.Text = deskQuote.TotalCost.ToString();
+            theMaterial.Text = $"{desk.MaterialType.ToString()}  (${(int)desk.MaterialType})";
 
             theDate.Text = String.Format("{0,10:dd-MMM-yy}", deskQuote.PurchaseDate);
-            theWidth.Text = String.Format("{0,10:0}", desk.Width);
-            theDepth.Text = String.Format("{0,10:0}", desk.Depth);
-            theArea.Text = String.Format("{0,10:0}", desk.getArea());
-            theDrawers.Text = String.Format("{0,10:0}", desk.DrawerNum);
-            theRush.Text = String.Format("{0,10:$0.00}", deskQuote.RushCost);
-            theTotal.Text = String.Format("{0,10:$0.00}", deskQuote.TotalCost);
-
-
+            theWidth.Text = String.Format("{0,0:0} in", desk.Width);
+            theDepth.Text = String.Format("{0,0:0} in", desk.Depth);
+            theArea.Text = String.Format("{0,0:0} in\xB2 ({1,0:$0.00})", desk.getArea(), desk.getArea() * 1);
+            theDrawers.Text = String.Format("{0,0:0} ({1,0:$0.00})", desk.DrawerNum.ToString(), desk.DrawerNum * 50);
+            theRush.Text = String.Format("{0,0:$0.00}", deskQuote.RushCost);
+            theTotal.Text = String.Format("{0,0:$0.00}", deskQuote.TotalCost);
+            theBaseCost.Text = String.Format("{0,0:$0.00}", DeskQuote.BASECOST);
+            
         }
 
         private void mainMenu_Click(object sender, EventArgs e)
@@ -51,6 +45,7 @@ namespace MegaDesk
             {
                 deskQuote.storeQuote();
                 MessageBox.Show("Quote Saved!", "Notice");
+                mainMenu.PerformClick();
             }
             catch
             {

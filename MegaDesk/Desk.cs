@@ -28,7 +28,7 @@ namespace MegaDesk
             Laminate = 100,
             Oak = 200,
             Rosewood = 300,
-            Veneer = 150
+            Veneer = 125
         };
 
         public Desk()
