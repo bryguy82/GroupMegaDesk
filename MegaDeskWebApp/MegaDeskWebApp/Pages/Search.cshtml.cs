@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MegaDeskWebApp.Pages
 {
-    public class PrivacyModel : PageModel
+    public class SearchModel : PageModel
     {
         public void OnGet()
         {

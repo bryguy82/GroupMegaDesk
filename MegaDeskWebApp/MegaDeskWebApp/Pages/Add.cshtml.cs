@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MegaDeskWebApp.Pages
 {
-    public class ContactModel : PageModel
+    public class AddModel : PageModel
     {
         public string Message { get; set; }
 
         public void OnGet()
         {
-            Message = "Your contact page.";
+            Message = "Your application description page.";
         }
     }
 }
