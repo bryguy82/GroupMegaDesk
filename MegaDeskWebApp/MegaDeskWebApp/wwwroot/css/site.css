@@ -35,3 +35,13 @@ body {
         display: none;
     }
 }
+
+/* I hate just overwriting bootstrap styles. But for the ease of quick development, it's probably best to just leverage bootstrap rather than starting clean*/
+/* Top Navigation */
+div.megadesk-navigation a.navbar-brand {
+    color: #fff;
+}
+
+div.megadesk-navigation a.navbar-brand:hover {
+    color: #ccc;
+}
