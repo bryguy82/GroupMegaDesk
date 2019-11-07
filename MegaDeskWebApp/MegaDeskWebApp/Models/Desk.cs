@@ -26,7 +26,7 @@ namespace MegaDeskWebApp.Models
         public int drawerNum { get; set; }
 
         [Required]
-        public DesktopMaterial MaterialType { get; set; }
+        public DesktopMaterial? materialType { get; set; }
 
         public ICollection<DeskQuote> deskQuotes { get; set; }
 
