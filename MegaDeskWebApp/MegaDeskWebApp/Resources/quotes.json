@@ -1,0 +1,28 @@
+[
+  {
+    "FirstName": "Test",
+    "LastName": "Testerson",
+    "TotalCost": 5538,
+    "RushCost": 80,
+    "Desk": {
+      "Width": 96,
+      "Depth": 48,
+      "DrawerNum": 7,
+      "MaterialType": 300
+    },
+    "PurchaseDate": "18 October 2019"
+  },
+  {
+    "FirstName": "Gorganzola",
+    "LastName": "Cheeseboy",
+    "TotalCost": 1070,
+    "RushCost": 60,
+    "Desk": {
+      "Width": 29,
+      "Depth": 15,
+      "DrawerNum": 5,
+      "MaterialType": 125
+    },
+    "PurchaseDate": "18 October 2019"
+  }
+]

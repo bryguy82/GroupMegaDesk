@@ -30,7 +30,7 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return NotFound();
             }
 
-            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
+            DeskQuote = await _context.DeskQuotes.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
 
             if (DeskQuote == null)
             {
@@ -69,7 +69,7 @@ namespace MegaDeskWebApp.Pages.MyDesk
 
         private bool DeskQuoteExists(int id)
         {
-            return _context.DeskQuote.Any(e => e.DeskQuoteID == id);
+            return _context.DeskQuotes.Any(e => e.DeskQuoteID == id);
         }
     }
 }

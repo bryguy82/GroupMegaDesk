@@ -14,6 +14,8 @@ namespace MegaDeskWebApp.Pages.MyDesk
     {
         private readonly MegaDeskWebApp.Data.MegaDeskWebAppContext _context;
 
+        public DateTime today { get; set; } = DateTime.Now.Date;
+
         public CreateModel(MegaDeskWebApp.Data.MegaDeskWebAppContext context)
         {
             _context = context;
@@ -27,6 +29,12 @@ namespace MegaDeskWebApp.Pages.MyDesk
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
 
+        [BindProperty]
+        public Desk Desk { get; set; }
+
+/*        [BindProperty]
+        public Desk.DesktopMaterial enumDesktop { get; set; }*/
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -34,10 +42,21 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return Page();
             }
 
-            _context.DeskQuote.Add(DeskQuote);
+            _context.DeskQuotes.Add(DeskQuote);
+            _context.Desks.Add(Desk);
+
+            calculations();
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+
+        public void calculations()
+        {
+            var area = Desk.getArea(Desk.width, Desk.depth);
+            DeskQuote.totalCost = DeskQuote.calcCost(area, Desk.drawerNum, Desk.materialType);
+            DeskQuote.rushCost = DeskQuote.calcRush(area, Desk.rushDays);
         }
     }
 }

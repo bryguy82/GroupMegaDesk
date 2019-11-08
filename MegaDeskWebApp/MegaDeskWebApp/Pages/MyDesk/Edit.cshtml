@@ -15,6 +15,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DeskQuote.DeskQuoteID" />
             <div class="form-group">
+                <label asp-for="DeskQuote.purchaseDate" class="control-label"></label>
+                <input asp-for="DeskQuote.purchaseDate" class="form-control" />
+                <span asp-validation-for="DeskQuote.purchaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DeskQuote.firstName" class="control-label"></label>
                 <input asp-for="DeskQuote.firstName" class="form-control" />
                 <span asp-validation-for="DeskQuote.firstName" class="text-danger"></span>

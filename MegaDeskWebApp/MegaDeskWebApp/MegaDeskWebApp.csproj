@@ -7,6 +7,18 @@
   <ItemGroup>
     <Compile Remove="Migrations\20191106205358_Initial-Migration.cs" />
     <Compile Remove="Migrations\20191106205358_Initial-Migration.Designer.cs" />
+    <Compile Remove="Migrations\20191107043835_Initial-migration.cs" />
+    <Compile Remove="Migrations\20191107043835_Initial-migration.Designer.cs" />
+    <Compile Remove="Migrations\20191107203817_Initial-Migration.cs" />
+    <Compile Remove="Migrations\20191107203817_Initial-Migration.Designer.cs" />
+    <Compile Remove="Migrations\20191107204103_Initial-Migration.cs" />
+    <Compile Remove="Migrations\20191107204103_Initial-Migration.Designer.cs" />
+    <Compile Remove="Migrations\20191107222015_Initial-Migration.cs" />
+    <Compile Remove="Migrations\20191107222015_Initial-Migration.Designer.cs" />
+    <Compile Remove="Migrations\20191107225027_desk-class-added.cs" />
+    <Compile Remove="Migrations\20191107225027_desk-class-added.Designer.cs" />
+    <Compile Remove="Migrations\20191107233932_Initial-migration.cs" />
+    <Compile Remove="Migrations\20191107233932_Initial-migration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

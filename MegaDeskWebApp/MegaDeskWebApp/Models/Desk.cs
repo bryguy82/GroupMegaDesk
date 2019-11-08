@@ -16,27 +16,31 @@ namespace MegaDeskWebApp.Models
 
         public int ID { get; set; }
 
-        [Range(24, 96), Required]
+        [Display(Name = "Width"), Range(24, 96), Required]
         public int width { get; set; }
 
-        [Range(12, 48), Required]
+        [Display(Name = "Depth"), Range(12, 48), Required]
         public int depth { get; set; }
 
-        [Range(0, 7), Required]
+        [Display(Name = "Number of Drawers"), Range(0, 7), Required]
         public int drawerNum { get; set; }
 
-        [Required]
-        public DesktopMaterial? materialType { get; set; }
+        [Display(Name = "Material Type"), StringLength(10, MinimumLength = 3), Required]
+        public string materialType { get; set; }
+
+        [Display(Name = "What's the Rush?"), Required]
+        public int rushDays { get; set; }
 
         public ICollection<DeskQuote> deskQuotes { get; set; }
 
+        public DesktopMaterial? desktopMaterial {get;set;}
 
         public Desk()
         {
 
         }
 
-        public int getArea()
+        public int getArea(int width, int depth)
         {
             return width * depth;
         }

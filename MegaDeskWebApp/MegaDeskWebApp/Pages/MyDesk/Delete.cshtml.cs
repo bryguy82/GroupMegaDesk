@@ -29,7 +29,7 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return NotFound();
             }
 
-            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
+            DeskQuote = await _context.DeskQuotes.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
 
             if (DeskQuote == null)
             {
@@ -45,11 +45,11 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return NotFound();
             }
 
-            DeskQuote = await _context.DeskQuote.FindAsync(id);
+            DeskQuote = await _context.DeskQuotes.FindAsync(id);
 
             if (DeskQuote != null)
             {
-                _context.DeskQuote.Remove(DeskQuote);
+                _context.DeskQuotes.Remove(DeskQuote);
                 await _context.SaveChangesAsync();
             }
 

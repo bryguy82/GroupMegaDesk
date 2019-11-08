@@ -23,7 +23,7 @@ namespace MegaDeskWebApp.Pages.MyDesk
 
         public async Task OnGetAsync()
         {
-            DeskQuote = await _context.DeskQuote.ToListAsync();
+            DeskQuote = await _context.DeskQuotes.ToListAsync();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MegaDeskWebApp.Models
 {
@@ -15,13 +16,13 @@ namespace MegaDeskWebApp.Models
 
         public Desk desk { get; set; }
 
-        [DataType(DataType.Date), Required]
-        public String purchaseDate;
+        [Display(Name = "Purchase Date"), DataType(DataType.Date), Required]
+        public DateTime purchaseDate { get; set; }
 
-        [StringLength(60, MinimumLength = 3), Required]
+        [Display(Name = "First Name"), StringLength(60, MinimumLength = 3), Required]
         public String firstName { get; set; }
 
-        [StringLength(60, MinimumLength = 3), Required]
+        [Display(Name = "Last Name"), StringLength(60, MinimumLength = 3), Required]
         public String lastName { get; set; }
 
         [DataType(DataType.Currency)]
@@ -47,7 +48,8 @@ namespace MegaDeskWebApp.Models
         private Dictionary<int, int> rushMedDict = new Dictionary<int, int>();
         private Dictionary<int, int> rushLargeDict = new Dictionary<int, int>();
         private int[] rushDays = new int[] { 3, 5, 7 };
-        private String[] rushPrices;
+        private int[] rushPrices = new int[] { 60, 70, 80, 40, 50, 60, 30, 35, 40 };
+/*        private String[] rushPrices = new String[9];*/
         private List<string> errorMessages = new List<string>();
 
 
@@ -102,16 +104,16 @@ namespace MegaDeskWebApp.Models
              *     5 day small desk, 5 day med desk, 5 day large desk,
              *     7 day small desk, 7 day med desk, 7 day large desk
              */
-            string fileName = "../../Resources/rushOrderPrices.txt";
+/*            string fileName = "../Resources/rushOrderPrices.txt";*/
             try
             {
-                if (File.Exists(fileName))
+/*                if (File.Exists(fileName))
                 {
                     rushPrices = File.ReadAllLines(fileName);
-                }
+                }*/
                 for (int i = 0; i < rushPrices.Length; i++)
                 {
-                    int rushCost = int.Parse(rushPrices[i]);
+/*                    rushCost = int.Parse(rushPrices[i]);*/
                     switch (i)
                     {
                         case 0:
@@ -200,7 +202,7 @@ namespace MegaDeskWebApp.Models
 
         public void storeQuote()
         {
-/*            //Create new streamreader, have it read all objects in quotes.json
+            //Create new streamreader, have it read all objects in quotes.json
             string jsonString = "";
             jsonString += File.ReadAllText("../../Resources/quotes.json");
             Console.WriteLine(jsonString);
@@ -217,7 +219,7 @@ namespace MegaDeskWebApp.Models
             var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
             StreamWriter writer = new StreamWriter("../../Resources/quotes.json");
             writer.WriteLine(convertedJson);
-            writer.Close();*/
+            writer.Close();
 
         }
         public int changeMaterialCost(DeskQuote quote, String materialNew)

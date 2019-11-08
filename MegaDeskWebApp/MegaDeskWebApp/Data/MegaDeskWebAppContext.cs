@@ -14,6 +14,14 @@ namespace MegaDeskWebApp.Data
         {
         }
 
-        public DbSet<MegaDeskWebApp.Models.DeskQuote> DeskQuote { get; set; }
+        public DbSet<DeskQuote> DeskQuotes { get; set; }
+        public DbSet<Desk> Desks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DeskQuote>().ToTable("DeskQuote");
+            modelBuilder.Entity<Desk>().ToTable("Desk");
+        }
+
     }
 }
