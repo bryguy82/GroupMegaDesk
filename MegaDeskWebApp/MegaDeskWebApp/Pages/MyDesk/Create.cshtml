@@ -45,16 +45,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="Desk.materialType" class="control-label"></label>
-                <input asp-for="Desk.materialType" class="form-control" />
+                <select asp-for="Desk.materialType" class="form-control">
+                    <option value="Pine">Pine</option>
+                    <option value="Laminate">Laminate</option>
+                    <option value="Oak">Oak</option>
+                    <option value="Rosewood">Rosewood</option>
+                    <option value="Veneer">Veneer</option>
+                </select>
                 <span asp-validation-for="Desk.materialType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Desk.rushDays" class="control-label"></label>
                 <select asp-for="Desk.rushDays" class="form-control">
-                    <option value="0">0</option>
-                    <option value="3">3</option>
-                    <option value="5">5</option>
-                    <option value="7">7</option>
+                    <option value="0">No rush</option>
+                    <option value="3">3 days</option>
+                    <option value="5">5 days</option>
+                    <option value="7">7 days</option>
                 </select>
                 <!--input asp-for="Desk.rushDays" class="form-control" /-->
                 <span asp-validation-for="Desk.rushDays" class="text-danger"></span>

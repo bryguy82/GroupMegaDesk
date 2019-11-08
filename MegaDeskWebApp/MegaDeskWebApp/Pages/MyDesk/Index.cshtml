@@ -35,6 +35,9 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].rushCost)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].desk.rushDays)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].totalCost)
             </th>
             <th></th>
@@ -63,6 +66,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.rushCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.desk.rushDays)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.totalCost)

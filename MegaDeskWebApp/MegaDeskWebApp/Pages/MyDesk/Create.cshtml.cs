@@ -56,7 +56,10 @@ namespace MegaDeskWebApp.Pages.MyDesk
         {
             var area = Desk.getArea(Desk.width, Desk.depth);
             DeskQuote.totalCost = DeskQuote.calcCost(area, Desk.drawerNum, Desk.materialType);
-            DeskQuote.rushCost = DeskQuote.calcRush(area, Desk.rushDays);
+            if(Desk.rushDays != 0)
+            {
+                DeskQuote.rushCost = DeskQuote.calcRush(area, Desk.rushDays);
+            }
         }
     }
 }

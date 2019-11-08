@@ -121,15 +121,15 @@ namespace MegaDeskWebApp.Models
                         case 6:
                             if (i == 0)
                             {
-                                rushSmallDict.Add(rushDays[0], rushCost);
+                                rushSmallDict.Add(rushDays[0], rushPrices[i]);
                             }
                             else if (i == 3)
                             {
-                                rushSmallDict.Add(rushDays[1], rushCost);
+                                rushSmallDict.Add(rushDays[1], rushPrices[i]);
                             }
                             else
                             {
-                                rushSmallDict.Add(rushDays[2], rushCost);
+                                rushSmallDict.Add(rushDays[2], rushPrices[i]);
                             }
                             break;
                         case 1:
@@ -137,15 +137,15 @@ namespace MegaDeskWebApp.Models
                         case 7:
                             if (i == 1)
                             {
-                                rushMedDict.Add(rushDays[0], rushCost);
+                                rushMedDict.Add(rushDays[0], rushPrices[i]);
                             }
                             else if (i == 4)
                             {
-                                rushMedDict.Add(rushDays[1], rushCost);
+                                rushMedDict.Add(rushDays[1], rushPrices[i]);
                             }
                             else
                             {
-                                rushMedDict.Add(rushDays[2], rushCost);
+                                rushMedDict.Add(rushDays[2], rushPrices[i]);
                             }
                             break;
                         case 2:
@@ -153,15 +153,15 @@ namespace MegaDeskWebApp.Models
                         case 8:
                             if (i == 2)
                             {
-                                rushLargeDict.Add(rushDays[0], rushCost);
+                                rushLargeDict.Add(rushDays[0], rushPrices[i]);
                             }
                             else if (i == 5)
                             {
-                                rushLargeDict.Add(rushDays[1], rushCost);
+                                rushLargeDict.Add(rushDays[1], rushPrices[i]);
                             }
                             else
                             {
-                                rushLargeDict.Add(rushDays[2], rushCost);
+                                rushLargeDict.Add(rushDays[2], rushPrices[i]);
                             }
                             break;
                         default:
@@ -183,7 +183,7 @@ namespace MegaDeskWebApp.Models
         {
             // Get the prices from a file.
             rushTextFile();
-
+            
             // Set up the cost based on the size of the desktop
             if (deskSize <= 1000)
             {

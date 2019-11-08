@@ -25,7 +25,7 @@ namespace MegaDeskWebApp.Models
         [Display(Name = "Number of Drawers"), Range(0, 7), Required]
         public int drawerNum { get; set; }
 
-        [Display(Name = "Material Type"), StringLength(10, MinimumLength = 3), Required]
+        [Display(Name = "Material Type"), Required]
         public string materialType { get; set; }
 
         [Display(Name = "What's the Rush?"), Required]
