@@ -121,3 +121,25 @@ tr td a img {
 table.table tbody tr.edit td {
     vertical-align: middle;
 }
+
+select#Desk_materialType.form-control.valid option[value="Pine"]:hover {
+    background-image: url(~/images/pine.jpg);
+}
+
+
+div#home {
+    display: grid;
+}
+
+div#hero {
+    grid-area: 1/1/3/2;
+}
+
+div#home_buttons {
+    grid-area: 1/1/2/2;
+}
+
+div#centerMaterial {
+    display: grid;
+    justify-content: center;
+}
