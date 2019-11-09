@@ -42,8 +42,10 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return Page();
             }
 
-            _context.DeskQuotes.Add(DeskQuote);
             _context.Desks.Add(Desk);
+
+            DeskQuote.deskID = Desk.ID;
+            _context.DeskQuotes.Add(DeskQuote);
 
             calculations();
 

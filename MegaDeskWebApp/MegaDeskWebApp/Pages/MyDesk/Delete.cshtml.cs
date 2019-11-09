@@ -21,6 +21,7 @@ namespace MegaDeskWebApp.Pages.MyDesk
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
+        public Desk Desk { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,6 +31,8 @@ namespace MegaDeskWebApp.Pages.MyDesk
             }
 
             DeskQuote = await _context.DeskQuotes.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
+            Desk = _context.Desks.Find(DeskQuote.deskID);
+            DeskQuote.desk = Desk;
 
             if (DeskQuote == null)
             {
@@ -46,10 +49,12 @@ namespace MegaDeskWebApp.Pages.MyDesk
             }
 
             DeskQuote = await _context.DeskQuotes.FindAsync(id);
+            Desk = _context.Desks.Find(DeskQuote.deskID);
 
             if (DeskQuote != null)
             {
                 _context.DeskQuotes.Remove(DeskQuote);
+                _context.Desks.Remove(Desk);
                 await _context.SaveChangesAsync();
             }
 

@@ -13,7 +13,8 @@ namespace MegaDeskWebApp.Models
     {
 
         public int DeskQuoteID { get; set; }
-
+        public int deskID { get; set; }
+        
         public Desk desk { get; set; }
 
         [Display(Name = "Purchase Date"), DataType(DataType.Date), Required]
@@ -25,19 +26,19 @@ namespace MegaDeskWebApp.Models
         [Display(Name = "Last Name"), StringLength(60, MinimumLength = 3), Required]
         public String lastName { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display(Name = "Size Price"), DataType(DataType.Currency)]
         public int sizeCost { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display(Name = "Drawers Price"), DataType(DataType.Currency)]
         public int drawerCost { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display(Name = "Material Price"), DataType(DataType.Currency)]
         public int materialCost { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display(Name = "Rush Price"), DataType(DataType.Currency)]
         public int rushCost { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display (Name = "Total Price"), DataType(DataType.Currency)]
         public int totalCost { get; set; }
 
         [DataType(DataType.Currency)]

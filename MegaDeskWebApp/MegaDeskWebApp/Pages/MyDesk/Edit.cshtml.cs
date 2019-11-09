@@ -22,6 +22,9 @@ namespace MegaDeskWebApp.Pages.MyDesk
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
+        
+        [BindProperty]
+        public Desk Desk { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,6 +34,8 @@ namespace MegaDeskWebApp.Pages.MyDesk
             }
 
             DeskQuote = await _context.DeskQuotes.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
+            Desk = _context.Desks.Find(DeskQuote.deskID);
+            DeskQuote.desk = Desk;
 
             if (DeskQuote == null)
             {
@@ -46,7 +51,10 @@ namespace MegaDeskWebApp.Pages.MyDesk
                 return Page();
             }
 
+            _context.Attach(Desk).State = EntityState.Modified;            
             _context.Attach(DeskQuote).State = EntityState.Modified;
+            DeskQuote.deskID = Desk.ID;
+            calculations();
 
             try
             {
@@ -70,6 +78,16 @@ namespace MegaDeskWebApp.Pages.MyDesk
         private bool DeskQuoteExists(int id)
         {
             return _context.DeskQuotes.Any(e => e.DeskQuoteID == id);
+        }
+
+        public void calculations()
+        {
+            var area = Desk.getArea(Desk.width, Desk.depth);
+            DeskQuote.totalCost = DeskQuote.calcCost(area, Desk.drawerNum, Desk.materialType);
+            if (Desk.rushDays != 0)
+            {
+                DeskQuote.rushCost = DeskQuote.calcRush(area, Desk.rushDays);
+            }
         }
     }
 }

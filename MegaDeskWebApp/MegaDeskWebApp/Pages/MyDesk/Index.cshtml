@@ -7,20 +7,31 @@
 
 <h2>Index</h2>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+
+<form>
+    <p>
+        Search by Name: <input type="text" asp-for="CustomerName" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].purchaseDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].purchaseDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].firstName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FirstSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].firstName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].lastName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].lastName)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].sizeCost)
@@ -44,41 +55,42 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.DeskQuote) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.purchaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sizeCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.drawerCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.materialCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rushCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.desk.rushDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalCost)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.DeskQuote)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sizeCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.drawerCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.materialCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rushCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.desk.rushDays) Days
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalCost)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
