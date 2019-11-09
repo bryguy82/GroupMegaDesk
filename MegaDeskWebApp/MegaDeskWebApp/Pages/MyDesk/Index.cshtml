@@ -2,16 +2,16 @@
 @model MegaDeskWebApp.Pages.MyDesk.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View Quotes";
 }
 
-<h2>Index</h2>
+<h2>Customer Quotes</h2>
 
 
 <form>
     <p>
         Search by Name: <input type="text" asp-for="CustomerName" />
-        <input type="submit" value="Filter" />
+        <input id="filter" type="submit" value="Filter" />
     </p>
 </form>
 
@@ -33,7 +33,7 @@
                     @Html.DisplayNameFor(model => model.DeskQuote[0].lastName)
                 </a>
             </th>
-            <th>
+            <!--th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].sizeCost)
             </th>
             <th>
@@ -47,7 +47,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].desk.rushDays)
-            </th>
+            </th-->
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].totalCost)
             </th>
@@ -57,7 +57,7 @@
     <tbody>
         @foreach (var item in Model.DeskQuote)
         {
-            <tr>
+            <tr class="edit">
                 <td>
                     @Html.DisplayFor(modelItem => item.purchaseDate)
                 </td>
@@ -67,7 +67,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.lastName)
                 </td>
-                <td>
+                <!--td>
                     @Html.DisplayFor(modelItem => item.sizeCost)
                 </td>
                 <td>
@@ -81,14 +81,20 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.desk.rushDays) Days
-                </td>
+                </td-->
                 <td>
                     @Html.DisplayFor(modelItem => item.totalCost)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">
+                        <img src="~/images/edit.jpg" alt="edit button" title="Edit"/>
+                    </a>|
+                    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">
+                        <img src="~/images/detail.jpg" alt="detail button" title="Details" />
+                    </a>|
+                    <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">
+                        <img src="~/images/delete.jpg" alt="delete button" title="Delete" />
+                    </a>
                 </td>
             </tr>
         }
