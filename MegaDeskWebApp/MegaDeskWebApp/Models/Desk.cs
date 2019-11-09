@@ -28,7 +28,7 @@ namespace MegaDeskWebApp.Models
         [Display(Name = "Material Type"), Required]
         public string materialType { get; set; }
 
-        [Display(Name = "What's the Rush?"), Required]
+        [Display(Name = "Rush Days"), Required]
         public int rushDays { get; set; }
 
         public ICollection<DeskQuote> deskQuotes { get; set; }
