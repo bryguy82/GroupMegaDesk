@@ -45,3 +45,79 @@ div.megadesk-navigation a.navbar-brand {
 div.megadesk-navigation a.navbar-brand:hover {
     color: #ccc;
 }
+
+/*Changes*/
+body {
+    background-color: rgb(179, 158, 137, .3);
+}
+
+div.hero_image img {
+    width: 100%;
+}
+
+div.container.body-content div.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2em 0;
+}
+
+div.row div.col-md-3 {
+    background-color: #456e8e;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #552809;
+    text-align: center;
+}
+
+h4 a.link-button {
+    color: #ffffff;
+}
+
+form input#CustomerName {
+    border-radius: 5px;
+    height: 34px;
+}
+
+form input#filter {
+    background-color: #456e8e;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    height: 34px;
+    padding: 0 15px;
+}
+
+div input.blue-button {
+    background-color: #456e8e;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #552809;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    padding: .5em 2em;
+}
+
+div input.red-button {
+    background-color: #c41a18;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #552809;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    padding: .5em 2em;
+}
+
+div input.red-button:hover {
+    background-color: #c41a18;
+}
+
+tr td a img {
+    width: 35px;
+    border-radius: 5px;
+}
+
+table.table tbody tr.edit td {
+    vertical-align: middle;
+}

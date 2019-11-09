@@ -5,9 +5,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+    <h2>Edit @Html.DisplayFor(model => model.DeskQuote.firstName)'s Desk Quote</h2>
 
-<h4>DeskQuote</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -68,7 +68,7 @@
                 <span asp-validation-for="Desk.rushDays" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default blue-button" />
             </div>
         </form>
     </div>
