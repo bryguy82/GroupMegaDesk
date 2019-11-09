@@ -14,7 +14,7 @@ namespace MegaDeskWebApp.Models
             Veneer = 125
         };
 
-        public int? ID { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Width"), Range(24, 96), Required]
         public int width { get; set; }

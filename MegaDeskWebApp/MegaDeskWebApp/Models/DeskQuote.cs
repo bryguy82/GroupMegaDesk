@@ -13,7 +13,7 @@ namespace MegaDeskWebApp.Models
     {
 
         public int DeskQuoteID { get; set; }
-        public int? deskID { get; set; }
+        public int deskID { get; set; }
         
         public Desk desk { get; set; }
 
