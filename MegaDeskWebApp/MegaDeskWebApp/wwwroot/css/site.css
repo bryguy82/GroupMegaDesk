@@ -59,28 +59,41 @@ div.container.body-content div.row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 2em 0;
+    padding: 5em 0;
 }
 
-div.row div.col-md-3 {
+div.row div.button-col {
     background-color: #456e8e;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #552809;
     text-align: center;
+    cursor: pointer;
 }
 
+div.row div.button-col:hover {
+    box-shadow: 3px 3px 3px #552809;
+}
+
+div.row div.button-col:hover a {
+    text-decoration: underline;
+}
 h4 a.link-button {
     color: #ffffff;
 }
 
-form input#CustomerName {
+.form-group input {
     border-radius: 5px;
+    background-color: #fafafa;
+    line-height: 24px;
+    border: 1px solid ccc;
+}
+
+form input#CustomerName {
     height: 34px;
 }
 
 form input#filter {
     background-color: #456e8e;
-    border-radius: 5px;
     text-align: center;
     color: #ffffff;
     height: 34px;
@@ -142,4 +155,17 @@ div#home_buttons {
 div#centerMaterial {
     display: grid;
     justify-content: center;
+    margin: 16px;
+    height: 53px;
+}
+
+.btn.btn-default:hover {
+    box-shadow: 3px 3px 3px #552809;
+}
+
+h2.home-title {
+    width: 200px;
+    position: absolute;
+    color:#fff;
+    left: 79px;
 }
