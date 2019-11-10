@@ -166,6 +166,7 @@ div#centerMaterial {
 h2.home-title {
     width: 200px;
     position: absolute;
-    color:#fff;
+    color: #fff;
     left: 79px;
+    margin-left: 5%;
 }
